@@ -1,0 +1,28 @@
+###
+POST http://localhost:3000/tasks
+Content-Type: application/json
+
+{
+  "title" : "Express",
+  "description" :" Express를 활용해 내 로컬에서 웹서버 구축축"
+} 
+
+###
+GET http://localhost:3000/tasks/67aadd3477bf02753f45f77
+
+###
+GET http://localhost:3000/tasks/67aadd3477bf02753f45f77f
+ 
+
+###
+PATCH http://localhost:3000/tasks/67aadd3477bf02753f45f77f
+Content-Type: application/json
+
+{
+  "title": "Express Update",
+  "description": "Express를 활용해 내 로컬에서 웹서버 구축 update"
+}
+
+###
+DELETE http://localhost:3000/tasks/67aadd3477bf02753f45f77f
+
