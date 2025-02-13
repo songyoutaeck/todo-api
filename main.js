@@ -1,8 +1,8 @@
 import express from "express";
-import mongoose from "mongoose";
+import mongoose from "mongoose"; 
 import Task from "./task.js"; 
 import * as dotenv from "dotenv";
-
+ 
 dotenv.config();  //env에 있는 객체들이 자동으로 됨됨
 
 const PORT = 3000; 
@@ -37,12 +37,15 @@ app.post('/tasks',asyncHandler(async(req,res)=>{
   }
 ));
 
-app.get("/tasks",asyncHandler(async(req,res)=>{
-  const count = req.query.count || 0;
-  const sortOption = req.query.sort === "oldest" ? ["createdAt","asc"] : ["createdAt","desc"];
-  const tasks = await Task.find().limit(count).sort([sortOption]);
-  res.send(tasks);
+app.get("/tasks", asyncHandler(async (req, res) => {
+  const count = parseInt(req.query.count) || 0;  // count를 숫자로 변환
+  const sortOrder = req.query.sort === "oldest" ? 1 : -1; // 1: 오래된 순, -1: 최신순
 
+  const tasks = await Task.find()
+    .sort({ createdAt: sortOrder }) // ✅ 정렬 방식 수정
+    .limit(count > 0 ? count : undefined); // ✅ count가 0이면 전체 반환
+
+  res.send(tasks);
 }));
 
 app.get("/tasks/:id",asyncHandler(async(req,res) =>{
