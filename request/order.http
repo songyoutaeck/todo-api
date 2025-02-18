@@ -1,0 +1,29 @@
+
+###
+GET http://localhost:3000/orders/a03b7801-d6d9-456d-ba3e-0e73750bc6b2
+
+###
+POST http://localhost:3000/orders
+Content-Type: application/json
+
+{
+  "userId": "70e1e61d-f2ae-4d7d-bf8f-d65eafdb6a45",
+  "orderItems": [
+    {
+      "productId": "1e112c02-7c92-4d52-b76e-485e41e3f64d",
+      "unitPrice": 59000,
+      "quantity": 5
+    },
+    {
+      "productId": "f751e63f-686d-42d4-898e-3ef6d4137908",
+      "unitPrice": 79000,
+      "quantity": 2
+    }
+  ]
+}
+
+
+// 배열을 만들어서 prisma의 키워드를 사용하여 해당 프로덕트를 가져오는것까지
+
+//퀴즈 
+// 진자 비지니스 로직이라면 유저가 주문을 했으니깐 실제 재고에서 감소를 시켜야하고 주문이 진행되어야할듯?
